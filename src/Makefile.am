@@ -1,5 +1,5 @@
 # Build a static library (libggk.a)
-noinst_LIBRARIES = libggk.a
+lib_LIBRARIES = libggk.a
 libggk_a_CXXFLAGS = -fPIC -Wall -Wextra -std=c++11 $(GLIB_CFLAGS) $(GIO_CFLAGS) $(GOBJECT_CFLAGS)
 libggk_a_SOURCES = DBusInterface.cpp \
                    DBusInterface.h \
@@ -21,7 +21,6 @@ libggk_a_SOURCES = DBusInterface.cpp \
                    GattUuid.h \
                    Globals.h \
                    Gobbledegook.cpp \
-                   ../include/Gobbledegook.h \
                    HciAdapter.cpp \
                    HciAdapter.h \
                    HciSocket.cpp \
@@ -40,6 +39,9 @@ libggk_a_SOURCES = DBusInterface.cpp \
                    TickEvent.h \
                    Utils.cpp \
                    Utils.h
+
+include_HEADERS = ../include/Gobbledegook.h
+
 # Build our standalone server (linking statically with libggk.a, linking dynamically with GLib)
 standalone_CXXFLAGS = -fPIC -Wall -Wextra -std=c++11
 noinst_PROGRAMS = standalone

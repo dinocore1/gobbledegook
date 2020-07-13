@@ -1,6 +1,6 @@
 # Build a static library (libggk.a)
 lib_LIBRARIES = libggk.a
-libggk_a_CXXFLAGS = -fPIC -Wall -Wextra -std=c++11 $(GLIB_CFLAGS) $(GIO_CFLAGS) $(GOBJECT_CFLAGS)
+libggk_a_CXXFLAGS = $(GLIB_CFLAGS) $(GIO_CFLAGS) $(GOBJECT_CFLAGS)
 libggk_a_SOURCES = DBusInterface.cpp \
                    DBusInterface.h \
                    DBusMethod.cpp \
@@ -43,7 +43,7 @@ libggk_a_SOURCES = DBusInterface.cpp \
 include_HEADERS = ../include/Gobbledegook.h
 
 # Build our standalone server (linking statically with libggk.a, linking dynamically with GLib)
-standalone_CXXFLAGS = -fPIC -Wall -Wextra -std=c++11
+standalone_CXXFLAGS =
 noinst_PROGRAMS = standalone
 standalone_SOURCES = standalone.cpp
 standalone_LDADD = libggk.a
